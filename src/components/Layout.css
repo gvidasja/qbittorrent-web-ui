@@ -1,0 +1,14 @@
+.layout.centered {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout.full {
+  width: 100%;
+  height: 100%;
+}
+
+.layout.spaced > :not(:first-child) {
+  margin-top: 6px;
+}

@@ -8,8 +8,8 @@ const ENV = {
 }
 
 const entries = {
-  'public/login': resolve('./src/login.js'),
-  'private/index': resolve('./src/index.js'),
+  login: resolve('./src/login.js'),
+  index: resolve('./src/index.js'),
 }
 
 const OUTPUT_DIR = resolve('dist')
@@ -32,14 +32,18 @@ module.exports = {
   },
 
   entry: entries,
-  plugins: Object.keys(entries).map(
-    chunk =>
-      new HtmlWebpackPlugin({
-        chunks: [chunk],
-        filename: `${chunk}.html`,
-        template: resolve('./src/index.html'),
-      })
-  ),
+  plugins: [
+    new HtmlWebpackPlugin({
+      chunks: ['login'],
+      filename: `login.html`,
+      template: resolve('./src/index.html'),
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['index'],
+      filename: `index.html`,
+      template: resolve('./src/index.html'),
+    }),
+  ],
   output: {
     path: OUTPUT_DIR,
     filename: '[name].js',

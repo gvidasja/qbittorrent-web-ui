@@ -5,22 +5,26 @@ const encode = (data = {}) =>
     .join('&')
 
 const apiClient = baseUrl => ({
+  get: url => fetch(`${baseUrl}/${url}`).then(r => r.json()),
   postForm: (url, data) =>
     fetch(`${baseUrl}/${url}`, {
       method: 'post',
       headers: {
-        'content-type': 'appication/x-www-form-urlencoded',
-        referer: 'http://localhost:3000',
+        'content-type': 'application/x-www-form-urlencoded',
       },
       body: encode(data),
     }),
 })
 
-const { postForm, post, get } = apiClient('/api/v2/auth')
+const { postForm, post, get } = apiClient('/api/v2')
 
 const api = {
   login(username, password) {
-    return postForm('login', { username, password })
+    return postForm('auth/login', { username, password })
+  },
+
+  getTorrents() {
+    return get('torrents/info')
   },
 }
 

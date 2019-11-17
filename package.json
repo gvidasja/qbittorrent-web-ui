@@ -5,13 +5,21 @@
   "author": "Gvidas Janušonis <gvidasja@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "webpack --mode=\"production\"",
-    "start": "webpack-dev-server --color --progress"
+    "postbuild": "mkdir dist/public dist/private && mv dist/login* dist/public && mv dist/*.html dist/private && mv dist/*.js dist/private",
+    "prestart": "rm -rf dist",
+    "start": "webpack-dev-server --color --progress",
+    "prestart": "rm -rf dist",
+    "watch": "webpack --mode=\"development\" --watch"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-router": "^5.1.2"
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
