@@ -2,10 +2,10 @@ import React from 'react'
 import './Layout.css'
 import c from 'classnames'
 import PropTypes from 'prop-types'
-import { Col } from './Flex'
+import Flex from './Flex'
 
-const Layout = ({ centered, full, spaced, ...props }) => (
-  <Col className={c('layout', { centered, full, spaced })} {...props}></Col>
+const Layout = ({ centered, full, spaced, direction = 'col', ...props }) => (
+  <Flex className={c('layout', { centered, full, spaced })} direction={direction} {...props}></Flex>
 )
 
 Layout.propTypes = {

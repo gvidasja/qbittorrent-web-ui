@@ -1,0 +1,32 @@
+.table-row {
+  background: #222;
+  margin: 2px;
+  padding: 2px;
+}
+
+.table-row:hover {
+  background: #1d1d1d;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subtitle-container {
+  display: flex;
+  align-items: center;
+}
+
+.subtitle-container button {
+  padding: 1px 4px;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  max-width: 70px;
+  font-size: 12px;
+}

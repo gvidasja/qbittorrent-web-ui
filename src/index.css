@@ -1,17 +1,61 @@
 html,
 body,
 #root {
+  font-family: 'Fantasque Sans Mono', Menlo, Monaco, Ubuntu Mono, Roboto Mono, monospace;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  background: #333;
 }
 
+body,
+html,
+a,
 input,
+textarea,
+select,
+button {
+  color: white;
+}
+
 button,
+input,
 select,
 textarea {
+  background: #222;
   padding: 6px 16px;
   border-radius: 3px;
-  border: 1px solid #ccc;
+  border: 1px solid #111;
+  outline: none;
+  color: white;
+}
+
+button:hover,
+input:hover,
+select:hover,
+textarea:hover {
+  background: #1d1d1d;
+}
+
+button:active,
+input:focus,
+select:focus,
+textarea:focus {
+  background: #181818;
+}
+
+form input,
+form select,
+form textarea {
+  width: 75vw;
+  max-width: 300px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
 }

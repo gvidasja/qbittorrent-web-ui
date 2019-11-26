@@ -14,7 +14,7 @@ export const Col = props => <Flex {...props} direction="col" />
 
 Flex.propTypes = {
   direction: PropTypes.oneOf(['row', 'col']).isRequired,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
 }
 
 export default Flex

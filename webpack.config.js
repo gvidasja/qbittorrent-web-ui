@@ -17,6 +17,8 @@ const OUTPUT_DIR = resolve('dist')
 module.exports = {
   devServer: {
     contentBase: OUTPUT_DIR,
+    host: '0.0.0.0',
+    disableHostCheck: true,
     port: 3000,
     hot: true,
     inline: true,
@@ -31,6 +33,7 @@ module.exports = {
     },
   },
 
+  devtool: 'cheap-eval-source-map',
   entry: entries,
   plugins: [
     new HtmlWebpackPlugin({
@@ -56,7 +59,19 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
-            options: { presets: ['@babel/preset-env', '@babel/preset-react'] },
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      browsers: 'last 1 chrome versions',
+                    },
+                  },
+                ],
+                '@babel/preset-react',
+              ],
+            },
           },
         ],
       },

@@ -1,0 +1,8 @@
+.navigation-menu a {
+  padding: 4px 16px;
+  text-decoration: none;
+}
+
+.navigation-menu a.active {
+  border-bottom: 3px solid #5a5;
+}

@@ -9,6 +9,10 @@
   height: 100%;
 }
 
-.layout.spaced > :not(:first-child) {
+.layout.col.spaced > :not(:first-child) {
   margin-top: 6px;
+}
+
+.layout.row.spaced > :not(:first-child) {
+  margin-left: 6px;
 }

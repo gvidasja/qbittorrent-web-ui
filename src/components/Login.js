@@ -4,6 +4,7 @@ import api from '../api'
 import './Login.css'
 import Card from './Card'
 import Layout from './Layout'
+import { preventDefault } from '../util'
 
 const setField = (field, set) => e => set(field, e.target.value)
 
@@ -12,19 +13,12 @@ const ERROR = {
   401: 'Unauthorized',
 }
 
-const preventDefault = handler => e => {
-  e.preventDefault()
-  return handler(e)
-}
-
 const Login = props => {
   const [error, setError] = useState()
   const [{ username, password }, set] = useFormReducer({ username: '', password: '' })
 
   const login = () =>
-    api
-      .login(username, password)
-      .then(r => (r.ok ? (location.href = '/') : setError(ERROR[r.status])))
+    api.login(username, password).then(r => (r ? (location.href = '/') : setError(ERROR[r.status])))
 
   return (
     <Layout full centered {...props}>
