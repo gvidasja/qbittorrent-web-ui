@@ -30,7 +30,7 @@ const Search = () => {
   const onDownload = (url, path) => api.downloadTorrent(url, path)
 
   return (
-    <div>
+    <Layout spaced>
       <form onSubmit={preventDefault(onSearch)}>
         <Layout direction="row" spaced style={{ margin: 6 }}>
           <input onChange={e => setSearch(e.target.value)} value={search} />
@@ -55,7 +55,7 @@ const Search = () => {
           </button>,
         ]}
       ></Table>
-    </div>
+    </Layout>
   )
 }
 

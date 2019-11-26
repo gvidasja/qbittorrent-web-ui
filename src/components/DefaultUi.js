@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 import api from '../api'
 
 const DefaultUi = () => {
-  const [loading, setLoading] = useState(true)
+  api.useAlternativeUi().then(() => (location.href = '/'))
 
-  useEffect(() => {
-    api.useAlternativeUi().then(() => setLoading(false))
-  }, [])
-
-  return loading ? <div>Redirecting to old UI</div> : <Redirect to="/" />
+  return <div>Redirecting to old UI</div>
 }
 
 export default DefaultUi
