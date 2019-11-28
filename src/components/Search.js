@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import api from '../api'
-import Table from './Table'
-import { FileSize } from './Formatting'
 import useQueryString from '../hooks/useQueryString'
 import DownloadModal from './DownloadModal'
 import { useModal } from '../hooks/useModal'
 import { preventDefault } from '../util'
-import Layout from './Layout'
-import Icon from './Icon'
+import { Layout, Table, FileSize, Icon } from './common'
 
 const Search = () => {
   const history = useHistory()
@@ -21,7 +18,7 @@ const Search = () => {
   const onSearch = () => {
     setLoading(true)
     onSetUrlSearch(search)
-    api.performSearch(search).then(t => {
+    api.search(search).then(t => {
       setTorrents(t)
       setLoading(false)
     })

@@ -1,20 +1,9 @@
-const { resolve } = require('path')
+const { resolve, join } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const argv = require('yargs').argv
-
-const ENV = {
-  DEV: 'development',
-  PROD: 'production',
-}
-
-const entries = {
-  login: resolve('./src/login.js'),
-  index: resolve('./src/index.js'),
-}
 
 const OUTPUT_DIR = resolve('dist')
 
-module.exports = {
+const baseConfig = {
   devServer: {
     contentBase: OUTPUT_DIR,
     host: '0.0.0.0',
@@ -34,23 +23,14 @@ module.exports = {
   },
 
   devtool: 'cheap-eval-source-map',
-  entry: entries,
   plugins: [
     new HtmlWebpackPlugin({
-      chunks: ['login'],
-      filename: `login.html`,
-      template: resolve('./src/index.html'),
-    }),
-    new HtmlWebpackPlugin({
       chunks: ['index'],
+      path: 'private',
       filename: `index.html`,
       template: resolve('./src/index.html'),
     }),
   ],
-  output: {
-    path: OUTPUT_DIR,
-    filename: '[name].js',
-  },
   module: {
     rules: [
       {
@@ -60,6 +40,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              plugins: ['@babel/plugin-proposal-class-properties'],
               presets: [
                 [
                   '@babel/preset-env',
@@ -83,3 +64,35 @@ module.exports = {
     ],
   },
 }
+
+const publicConfig = {
+  ...baseConfig,
+  entry: resolve('./src/app/public.js'),
+  output: {
+    path: join(OUTPUT_DIR, 'public'),
+    filename: 'login.js',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'login.html',
+      template: resolve('./src/index.html'),
+    }),
+  ],
+}
+
+const privateConfig = {
+  ...baseConfig,
+  entry: resolve('./src/app/private.js'),
+  output: {
+    path: join(OUTPUT_DIR, 'private'),
+    filename: 'index.js',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: resolve('./src/index.html'),
+    }),
+  ],
+}
+
+module.exports = [privateConfig, publicConfig]

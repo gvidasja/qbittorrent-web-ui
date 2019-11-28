@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { preventDefault } from '../util'
-import Card from './Card'
-import Layout from './Layout'
+import { Card, Layout } from './common'
 
 const CATEGORIES = {
   tv: 'TV',

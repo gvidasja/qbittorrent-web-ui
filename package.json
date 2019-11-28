@@ -5,9 +5,7 @@
   "author": "Gvidas Janušonis <gvidasja@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rm -rf dist",
     "build": "webpack --mode=\"production\"",
-    "postbuild": "mkdir dist/public dist/private && mv dist/login* dist/public && mv dist/*.html dist/private && mv dist/*.js dist/private",
     "prestart": "rm -rf dist",
     "start": "webpack-dev-server --color --progress",
     "watch": "webpack --mode=\"development\" --watch"
@@ -24,6 +22,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",

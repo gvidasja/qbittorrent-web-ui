@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import useFormReducer from '../hooks/useFormReducer'
-import api from '../api'
 import './Login.css'
-import Card from './Card'
-import Layout from './Layout'
 import { preventDefault } from '../util'
+import api from '../api'
+import { Card, Layout } from './common'
 
 const setField = (field, set) => e => set(field, e.target.value)
 

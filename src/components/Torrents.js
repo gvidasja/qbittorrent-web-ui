@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api'
-import Table from './Table'
-import { FileSize, TransferSpeed, ProgressBar, Number } from './Formatting'
+import { Table, FileSize, TransferSpeed, ProgressBar, Number } from './common'
 
 const Torrents = () => {
   const [transfers, setTransfers] = useState()
