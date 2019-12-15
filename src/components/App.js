@@ -5,12 +5,14 @@ import Torrents from './Torrents'
 import Search from './Search'
 import Login from './Login'
 import { ModalProvider } from '../hooks/useModal'
+import { AlertsProvider } from '../hooks/useAlerts'
 import DefaultUi from './DefaultUi'
+import ProviderRoot from './ProviderRoot'
 import './App.css'
 
 const App = () => (
   <Layout full>
-    <ModalProvider>
+    <ProviderRoot providers={[ModalProvider, AlertsProvider]}>
       <Router>
         <Row className="navigation-menu">
           <NavLink to="/torrents">Torrents</NavLink>
@@ -26,7 +28,7 @@ const App = () => (
           <Redirect to="/torrents" />
         </Switch>
       </Router>
-    </ModalProvider>
+    </ProviderRoot>
   </Layout>
 )
 

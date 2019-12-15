@@ -1,0 +1,21 @@
+.alerts-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 12px;
+}
+
+.alerts-container > .alert:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+.alert {
+  border-radius: 6px;
+  padding: 6px 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.alert.info {
+  background: #58a;
+  border: 2px solid #257;
+}

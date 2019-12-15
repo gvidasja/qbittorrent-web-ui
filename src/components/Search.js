@@ -6,6 +6,7 @@ import DownloadModal from './DownloadModal'
 import { useModal } from '../hooks/useModal'
 import { preventDefault } from '../util'
 import { Layout, Table, FileSize, Icon } from './common'
+import { useAlerts } from '../hooks/useAlerts'
 
 const Search = () => {
   const history = useHistory()
@@ -14,6 +15,7 @@ const Search = () => {
   const [loading, setLoading] = useState(false)
   const [torrents, setTorrents] = useState()
   const [openDownloadModal] = useModal(DownloadModal)
+  const { showInfo } = useAlerts()
 
   const onSearch = () => {
     setLoading(true)
@@ -24,7 +26,8 @@ const Search = () => {
     })
   }
 
-  const onDownload = (url, path) => api.downloadTorrent(url, path)
+  const onDownload = (url, path) =>
+    api.downloadTorrent(url, path).then(() => showInfo('Torrent added', 3000))
 
   return (
     <Layout spaced>
